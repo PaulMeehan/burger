@@ -4,7 +4,9 @@ const orm = {
 
     selectAll : (tableName, cb) => {
         var strSQL = "select * from ??";
+        console.log(strSQL);
         connection.query(strSQL, [tableName], (err, results) => {
+            console.log("back");
             if (err) throw err;
             cb(results);
         });
@@ -21,4 +23,4 @@ const orm = {
 
 };
 
-module.export = orm;
+module.exports = orm;

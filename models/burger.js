@@ -2,6 +2,8 @@ const orm = require("../config/orm");
 
 const burger = {
     all: function(cb) {
+        console.log("yup");
+        debugger;
         orm.selectAll("burgers", function(res) {
             cb(res);
         });
