@@ -1,4 +1,6 @@
-$(".create-form").on("submit", function (event) {
+// $(".create-form").on("submit", function (event) {
+
+function addBurger() {
     // Prevent clicking Enter from triggering event.
     event.preventDefault();
 
@@ -6,7 +8,7 @@ $(".create-form").on("submit", function (event) {
 
     const newBurger = {
         burger_name : $("#newBurger").val().trim(),
-        devoured : false
+        devoured : 0
     };
 
     // Send post request
@@ -18,5 +20,22 @@ $(".create-form").on("submit", function (event) {
         location.reload();
     });
 
-});
+};
 
+
+// $(".change-devoured").on("click", function(event) {
+function devourIt(thisId) {
+    // const id= $(this).data("id");
+
+    const newDevoured = {
+        devoured : 1
+    };
+
+    $.ajax("/api/burger/update/" + thisId, {
+        type: "PUT",
+        data: newDevoured
+    }).then(() => {
+        location.reload();
+    });
+
+};
