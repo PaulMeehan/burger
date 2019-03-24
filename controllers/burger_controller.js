@@ -4,24 +4,40 @@ const router = express.Router();
 
 const burger = require("../models/burger");
 
-router.get("/all", function(req, res) {
-    console.log("start");
+router.get("/api/burger/all", function(req, res) {
     burger.all(function(response) {
         const hbsObject = {
             burger : response
         };
-        console.log(hbsObject);
-        // res.render("index", hbsObject);
+        // res.json(hbsObject);
+        res.render("index", hbsObject);
     });
 });
 
 router.post("/api/burger/new", function(req, res) {
     console.log("in post");
-    burger.create(req.body.name, req.body.devoured, response) {
-        const hbsObject = {
+    var newValues = [];
+    newValues.push(req.body.name);
+    newValues.push(req.body.devoured);
 
+    burger.create(["burger_name", "devoured"], newValues, (response) => {
+    //     const hbsObject = {
+    //         burger : response
+    //     };
+    res.json({ id : response.insertId });
+    });
+});
+
+router.put("/api/burger/update/:id", function (req, res) {
+    console.log("in update");
+    burger.update(req.params.id, { devoured : req.body.devoured }, (response) => {
+        debugger;
+        if (response.changedRows === 0) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
         }
-    }
+    });
 });
 
 module.exports = router;

@@ -8,11 +8,17 @@ const burger = {
             cb(res);
         });
     },
-    create: function(bname, bdevoured, cb) {
-        var values = bname + ", " + bdevoured;
-        orm.insertOne("burgers", "burger_name, devoured", values, function(res) {
+    create: function(columns, values, cb) {
+        console.log("in create");
+        orm.insertOne("burgers", columns, values, function(res) {
             cb(res);
         }); 
+    },
+    update: function(id, newValues, cb) {
+        console.log("in update");
+        orm.updateOne("burgers", id, newValues, function(res) {
+            cb(res);
+        });
     }
 };
 
