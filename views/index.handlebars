@@ -44,8 +44,17 @@
             {{!-- blank --}}
         </div>
         <div class="col-sm-4">
-            <input type="text" id="newBurger"/>
-            <button 
+            <h2>Add a new burger:</h2>
+
+            <form class="create-form">
+
+                <div class="form-group">
+                    <label for="newBurger">Burger name:</label>
+                    <input type="text" id="newBurger" name="burger_name">
+                </div>
+
+                <button type="submit">Add Burger</button>
+            </form>
         </div>
         <div class="col-sm-4">
             {{!-- blank --}}

@@ -11,6 +11,7 @@ const orm = {
     },
 
     insertOne : (tableName, fieldList, valueList, cb) => {
+        console.log("in insertOne");
         var theseValues = [];
         var strSQL = "insert into " + tableName;
         strSQL = strSQL + " (" + fieldList.toString() + ") values (";

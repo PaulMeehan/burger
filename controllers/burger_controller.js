@@ -17,7 +17,7 @@ router.get("/api/burger/all", function(req, res) {
 router.post("/api/burger/new", function(req, res) {
     console.log("in post");
     var newValues = [];
-    newValues.push(req.body.name);
+    newValues.push(req.body.burger_name);
     newValues.push(req.body.devoured);
 
     burger.create(["burger_name", "devoured"], newValues, (response) => {
