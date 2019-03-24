@@ -8,21 +8,36 @@
         <div class="col-sm-6">
             <ul>
                 {{#each burger}}
-                    {{#unless devoured === true}}
-                        {{>burgers/burger-block devoured=false}}
-                    {{/if}}
+                    {{#unless devoured}}
+                        {{!-- {{>burgers/single-burger devoured=false}} --}}
+                        <li>
+                            {{burger_name}}
+                        
+                            <button class="change-devoured" data-id="{{id}}" data-newdevoured="{{devoured}}">
+                                {{#if devoured}}Put it back!{{else}}Devoure it!{{/if}}
+                            </button>
+                        
+                        </li>
+                    {{/unless}}
                 {{/each}}
             </ul>
         </div>
         <div class="col-sm-6">
             <ul>
                 {{#each burger}}
-                    {{#unless devoured === false}}
-                        {{>burgers/burger-block devoured=true}}
+                    {{#if devoured}}
+                        {{!-- {{>burgers/single-burger devoured=false}} --}}
+                        <li>
+                            {{burger_name}}
+                    
+                            <button class="change-devoured" data-id="{{id}}" data-newdevoured="{{devoured}}">
+                                {{#if devoured}}Put it back!{{else}}Devoure it!{{/if}}
+                            </button>
+                    
+                        </li>
                     {{/if}}
                 {{/each}}
-            </ul>        
-        </div>
+            </ul>        </div>
     </div>
     <div class="row">
         <div class="col-sm-4">
