@@ -1,61 +1,64 @@
 <div class="container">
+
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12 topAndBottom">
+            <img src="/assets/img/burger3.jpg" alt="Burger image">
             <h1>Eat Da Burger!</h1>
         </div>
     </div>
+    
     <div class="row">
         <div class="col-sm-6">
-            <ul>
+
+            <ul class="burgerList">
                 {{#each burger}}
                     {{#unless devoured}}
-                        {{!-- {{>burgers/single-burger devoured=false}} --}}
                         <li>
-                            {{burger_name}}
-                        
-                            <button class="change-devoured" onclick="devourIt({{this.id}})">
-                                {{#if devoured}}Put it back!{{else}}Devoure it!{{/if}}
+                            {{id}}.  {{burger_name}}
+                            <button class="btn btn-primary btn-sm change-devoured" data-id="{{this.id}}">
+                                {{#if devoured}}Put it back!{{else}}Devour it!{{/if}}
                             </button>
-                        
                         </li>
                     {{/unless}}
                 {{/each}}
             </ul>
+
         </div>
         <div class="col-sm-6">
-            <ul>
+
+            <ul class="burgerList">
                 {{#each burger}}
                     {{#if devoured}}
-                        {{!-- {{>burgers/single-burger devoured=false}} --}}
                         <li>
-                            {{burger_name}}
-                    
+                            {{id}}.  {{burger_name}}
                         </li>
                     {{/if}}
                 {{/each}}
             </ul>
+
         </div>
     </div>
+   
     <div class="row">
         <div class="col-sm-4">
             {{!-- blank --}}
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4 topAndBottom">
             <h2>Add a new burger:</h2>
 
-            {{!-- <form class="create-form"> --}}
+            <form class="create-form">
 
-                {{!-- <div class="form-group"> --}}
+                <div class="form-group">
                     <label for="newBurger">Burger name:</label>
                     <input type="text" id="newBurger" name="burger_name">
-                {{!-- </div> --}}
+                </div>
+                <button class="btn btn-light btn-md" type="submit">Click to add</button>
 
-                {{!-- <button type="submit">Add Burger</button> --}}
-                <button onclick="addBurger()">Add Burger</button>
             </form>
         </div>
         <div class="col-sm-4">
             {{!-- blank --}}
         </div>
     </div>
+
 </div>

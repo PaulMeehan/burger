@@ -1,41 +1,37 @@
-// $(".create-form").on("submit", function (event) {
+$(document).ready(function () {
+    $(".create-form").on("submit", function (event) {
 
-function addBurger() {
-    // Prevent clicking Enter from triggering event.
-    event.preventDefault();
+        // Prevent clicking Enter from triggering event.
+        event.preventDefault();
 
-    console.log("in submit");
+        const newBurger = {
+            burger_name : $("#newBurger").val().trim(),
+            devoured : 0
+        };
 
-    const newBurger = {
-        burger_name : $("#newBurger").val().trim(),
-        devoured : 0
-    };
+        $.ajax("/api/burger/new", {
+            type: "POST",
+            data: newBurger
+        }).then(() => {
+            location.reload();
+        });
 
-    // Send post request
-    $.ajax("/api/burger/new", {
-        type: "POST",
-        data: newBurger
-    }).then(() => {
-        // Refresj the page
-        location.reload();
     });
 
-};
 
+    $(".change-devoured").on("click", function(event) {
+        const thisId = $(this).attr("data-id");
 
-// $(".change-devoured").on("click", function(event) {
-function devourIt(thisId) {
-    // const id= $(this).data("id");
+        const newDevoured = {
+            devoured : 1
+        };
 
-    const newDevoured = {
-        devoured : 1
-    };
+        $.ajax("/api/burger/update/" + thisId, {
+            type: "PUT",
+            data: newDevoured
+        }).then(() => {
+            location.reload();
+        });
 
-    $.ajax("/api/burger/update/" + thisId, {
-        type: "PUT",
-        data: newDevoured
-    }).then(() => {
-        location.reload();
     });
-
-};
+});

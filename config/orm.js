@@ -11,7 +11,6 @@ const orm = {
     },
 
     insertOne : (tableName, fieldList, valueList, cb) => {
-        console.log("in insertOne");
         var theseValues = [];
         var strSQL = "insert into " + tableName;
         strSQL = strSQL + " (" + fieldList.toString() + ") values (";
@@ -30,8 +29,6 @@ const orm = {
     },
 
     updateOne: (tableName, id, updatesObject, cb) => {
-        console.log("in updateOne");
-        debugger;
         var changeVariables = Object.keys(updatesObject);
         var changeValues = Object.values(updatesObject);
         var numProperties = changeVariables.length;
@@ -44,7 +41,6 @@ const orm = {
             };
         };
         strSQL = strSQL + " where id = " + id;
-        console.log(strSQL);
 
         connection.query(strSQL, (err, results) => {
             if (err) throw err;
