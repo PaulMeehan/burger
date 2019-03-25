@@ -5,6 +5,8 @@ const express = require("express");
 const app = express();
 const path = require("path");
 
+const PORT = process.env.PORT || 8080;
+
 app.use(express.static(path.join(__dirname, '/public')));
 
 // Parse application body as JSON
@@ -19,6 +21,6 @@ const routes = require("./controllers/burger_controller");
 
 app.use(routes);
 
-app.listen(8080, function () {
-    console.log("App listening on PORT: " + 8080);
+app.listen(PORT, function () {
+    console.log("App listening on PORT: " + PORT);
 });

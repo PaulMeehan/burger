@@ -3,14 +3,6 @@ const router = express.Router();
 
 const burger = require("../models/burger");
 
-router.get("/api/burger/all", function(req, res) {
-    burger.all(function(response) {
-        const hbsObject = {
-            burger : response
-        };
-        res.render("index", hbsObject);
-    });
-});
 
 router.post("/api/burger/new", function(req, res) {
     var newValues = [];
@@ -31,5 +23,15 @@ router.put("/api/burger/update/:id", function (req, res) {
         }
     });
 });
+
+router.get("/*", function (req, res) {
+    burger.all(function (response) {
+        const hbsObject = {
+            burger: response
+        };
+        res.render("index", hbsObject);
+    });
+});
+
 
 module.exports = router;
